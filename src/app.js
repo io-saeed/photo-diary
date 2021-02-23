@@ -7,12 +7,7 @@ import {MENU} from "./utils";
 
 
 
-const url = [
-"https://bulma.io/images/placeholders/256x256.png",
-"https://bulma.io/images/placeholders/480x320.png",
-"https://bulma.io/images/placeholders/256x256.png",
-"https://bulma.io/images/placeholders/480x320.png"
-];
+
 const Body=(props)=>{
     return(
     <div className="">
@@ -26,7 +21,7 @@ const App = (props) =>{
            <NavBar logo="https://bulma.io/images/bulma-logo.png" menu={MENU}/>
            <Router>
              <Tabs />
-             <ModalSwitch url={url} />
+             <ModalSwitch  /> { /* to switch  layout route*/}
            </Router> 
        </Body>
     )

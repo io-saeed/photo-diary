@@ -9,18 +9,17 @@ const ModalSwitch =()=>{
  
     return(<div>
         <Switch location={ background || location}>
+                
             <Route exact path="/" >
-                <PhotoGallery /> 
-            </Route>
-            <Route exact path="/nature" >
-                <PhotoGallery /> 
+                <PhotoGallery location={location}/> 
             </Route>
             <Route exact path="/people" >
                 <PhotoGallery /> 
-            </Route>
+            </Route>  
+             
             
         </Switch>
-      <Route  path="/image/som.jpg" children={<Modal />} />
+          {background && <Route  path="/image" children={<Modal />} />  }
     </div>
     )
 
