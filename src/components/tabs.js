@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 const Tabs=(props)=>{
     return(
-    <div className="tabs">
+    <div className="tabs is-boxed">
       <div className="container">
       <ul>
         <li className="is-active"><Link to="/">General</Link></li>

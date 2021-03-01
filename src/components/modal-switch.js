@@ -5,7 +5,6 @@ import Modal from "./modal";
 const ModalSwitch =()=>{
     let location = useLocation();
     let background = location.state && location.state.background;
-    console.log(location);
  
     return(<div>
         <Switch location={ background || location}>
@@ -19,7 +18,7 @@ const ModalSwitch =()=>{
              
             
         </Switch>
-          {background && <Route  path="/image" children={<Modal />} />  }
+          {background && <Route  path="/image/:id" children={<Modal />} />  }
     </div>
     )
 
