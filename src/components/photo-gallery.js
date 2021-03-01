@@ -1,22 +1,30 @@
 import {Link} from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
-import { addPhotos,selectAllPhotos } from "../redux/randomSlice";
+import { addPhotos,selectAllPhotos, removePhoto } from "../redux/randomSlice";
 import unsplash from "../unsplash";
 
 
 //a framed photo in a the gallery
-const FramedPhoto=({url,caption,location, id})=>{
+const FramedPhoto=({url,caption,location, id, dispatch})=>{
+  console.log(id);
+  const remove=(index,_)=>{
+   dispatch(removePhoto(index));
+  } 
+
   return(
        <div className="column is-narrow">
             <div className="box">
-            <p className="heading">{ caption }</p>
-            <figure className="image">
-              <Link to={
+               <i onClick={(e)=>remove(id,e)} className="delete"></i>     
+               <p className="heading">{ caption }</p>
+                
+            <figure className="image cursor">
+              
+              <Link  to={
                     {pathname:`/image/${id}` ,
                      state:{ background: location }                     
                     }}>
-              <img src={url} alt="random images"/></Link>
+              <img  src={url} alt="random images"/></Link>
             </figure>
             </div>
             
@@ -50,15 +58,17 @@ const PhotoGallery=({photoUrl,location})=>{
       }
       fetch();
  
-    },[]);
+    },[dispatch]);
+
     return(
         <GalleryContainer>
             {allPhotos.map((photoObj,index)=>(
              <FramedPhoto location={location}
                 caption={photoObj.alt_description} 
-                key={photoObj.id} 
+                key={index} 
                 id={index} 
                 url={photoObj.urls.small} 
+                dispatch={dispatch}
             />))}
            
         </GalleryContainer>

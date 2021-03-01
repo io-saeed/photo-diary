@@ -6,8 +6,8 @@ const randomSlice = createSlice({
         photos:[]
     },
     reducers:{
-        removePhoto:(state,id)=>{
-            state.photos = state.photos.filter((_,index)=>index!==1); // underscore means ignore value
+        removePhoto:(state, action)=>{
+            state.photos = state.photos.filter((_,index)=>index!==action.payload); // underscore means ignore value
         },
         addPhotos:(state, action)=>{
             state.photos.push(...action.payload);
