@@ -1,8 +1,8 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import unsplash from "../unsplash";
 
-const randomSlice = createSlice({
-    name:"randomPhotos",
+const natureSlice = createSlice({
+    name:"naturePhotos",
     initialState:{
         photos:[],
         page: 1,
@@ -15,16 +15,14 @@ const randomSlice = createSlice({
         },
         addPhotos:(state, action)=>{
             state.photos.push(...action.payload);
-           
+            state.page += 1;
         },
         getPhotos: state=>{
            state.loading= true;
-            state.page += 1;
         },
         setErrors: state=>{
             state.loading=false;
             state.hasErrors= true;
-            state.page -=1;
         }
 
     }
@@ -32,16 +30,16 @@ const randomSlice = createSlice({
 
 })
 
-export const {removePhoto, addPhotos,getPhotos, setErrors} = randomSlice.actions;
-export const selectAllPhotos = state => state.randomPhotos.photos;
-export const selectPage = state => state.randomPhotos.page;
-export const selectPhoto = (state,index) => state.randomPhotos.photos[index];
+export const {removePhoto, addPhotos,getPhotos, setErrors} = natureSlice.actions;
+export const selectAllPhotos = state => state.naturePhotos.photos;
+export const selectPage = state => state.naturePhotos.page;
+export const selectPhoto = (state,index) => state.naturePhotos.photos[index];
 
-export function fetchRandomPhotos(page){
+export function fetchNaturePhotos(page){
     return async (dispatch)=>{
           dispatch(getPhotos());
           try{
-              const data = await unsplash.photos.list({page:page})
+              const data = await unsplash.photos.list({page:4});
               dispatch(addPhotos(data.response.results));
           }catch(error){
               dispatch(setErrors());
@@ -50,4 +48,4 @@ export function fetchRandomPhotos(page){
 
 }
 
-export default randomSlice.reducer;
+export default natureSlice.reducer;

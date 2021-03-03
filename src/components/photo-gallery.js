@@ -1,12 +1,19 @@
 import {Link} from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
-import { addPhotos,selectAllPhotos, removePhoto } from "../redux/randomSlice";
-import unsplash from "../unsplash";
+import { fetchRandomPhotos,selectAllPhotos, removePhoto , selectPage} from "../redux/randomSlice";
+
 
 
 //a framed photo in a the gallery
-const FramedPhoto=({url,caption,location, id, dispatch})=>{
+const FramedPhoto=(
+    { url,
+      caption,
+      location,
+      id, 
+      dispatch,
+      download
+    })=>{
   console.log(id);
   const remove=(index,_)=>{
    dispatch(removePhoto(index));
@@ -15,7 +22,11 @@ const FramedPhoto=({url,caption,location, id, dispatch})=>{
   return(
        <div className="column is-narrow">
             <div className="box">
-               <i onClick={(e)=>remove(id,e)} className="delete"></i>     
+               <div className="relative">
+                <i onClick={(e)=>remove(id,e)} className="delete"></i> 
+                <a className="button is-small is-outlined top-right" href={download}>Download</a>    
+               </div>
+               
                <p className="heading">{ caption }</p>
                 
             <figure className="image cursor">
@@ -48,15 +59,12 @@ const GalleryContainer=(props)=>{
 
 
 //Photogallery with collection of photos
-const PhotoGallery=({photoUrl,location})=>{
+const PhotoGallery=({photoUrl,location, fetch})=>{
     const dispatch = useDispatch();
     const allPhotos = useSelector(selectAllPhotos);
+    const page = useSelector(selectPage);
     useEffect(()=>{
-      const fetch = async ()=>{
-          const data = await unsplash.photos.list({page:6})
-          dispatch(addPhotos(data.response.results));
-      }
-      fetch();
+      dispatch(fetch(page));
  
     },[dispatch]);
 
@@ -68,8 +76,9 @@ const PhotoGallery=({photoUrl,location})=>{
                 key={index} 
                 id={index} 
                 url={photoObj.urls.small} 
-                dispatch={dispatch}
-            />))}
+                download={photoObj.links.download}
+                dispatch={dispatch} />  ))
+            }
            
         </GalleryContainer>
     )
