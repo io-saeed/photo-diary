@@ -15,16 +15,16 @@ const randomSlice = createSlice({
         },
         addPhotos:(state, action)=>{
             state.photos.push(...action.payload);
-           
+            state.page += 1;
         },
         getPhotos: state=>{
            state.loading= true;
-            state.page += 1;
+            
         },
         setErrors: state=>{
             state.loading=false;
             state.hasErrors= true;
-            state.page -=1;
+            
         }
 
     }

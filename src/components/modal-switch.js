@@ -1,7 +1,7 @@
-import { Switch, useLocation, Route} from "react-router-dom";
-import PhotoGallery from "./photo-gallery";
-import { fetchRandomPhotos } from "../redux/randomSlice";
-import { fetchNaturePhotos } from "../redux/natureSlice";
+import { Switch, useLocation, Route, Redirect} from "react-router-dom";
+import RandomPhotos from "./RandomPhotos";
+import NaturePhotos from "./NaturePhotos";
+import PeoplePhotos from "./PeoplePhotos";
 import Modal from "./modal";
 
 const ModalSwitch =()=>{
@@ -12,15 +12,16 @@ const ModalSwitch =()=>{
         <Switch location={ background || location}>
                 
             <Route exact path="/" >
-                <PhotoGallery 
-                location={location}
-                 fetch={fetchRandomPhotos}
-                /> 
+                <Redirect to="/category/random"/>
             </Route>
-            <Route exact path="/nature" >
-                <PhotoGallery 
-                fetch={fetchNaturePhotos}
-                location={location} /> 
+            <Route path="/category/random" >
+                <RandomPhotos />
+            </Route>  
+            <Route path="/category/nature" >
+                <NaturePhotos />
+            </Route>  
+            <Route path="/category/people" >
+                <PeoplePhotos />
             </Route>  
              
             
