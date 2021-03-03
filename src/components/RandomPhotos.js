@@ -16,9 +16,11 @@ const RandomPhotos =()=>{
     const location = useLocation();
 
     useEffect(()=>{
-        dispatch(fetchRandomPhotos(pageNum));
+        if(pageNum === 1){
+            dispatch(fetchRandomPhotos(pageNum));
+        }
         
-    },[dispatch])
+    },[dispatch,pageNum])
 
     return(
        <div>

@@ -6,14 +6,14 @@ const Modal=()=>{
   const {id} = useParams()
   const photo = useSelector((state) => state.randomPhotos.photos[id].urls.small);
   return(
-  <div class="modal is-active">
-      <div class="modal-background"></div>
-      <div class="modal-content">
-        <p class="image is-4by3">
-          <img src={photo} alt=""/>
+  <div className="modal is-active">
+      <div className="modal-background"></div>
+      <div className="modal-content">
+        <p className="image">
+          <img className="display-pic" src={photo} alt=""/>
         </p>
       </div>
-  <button class="modal-close is-large" aria-label="close"
+  <button className="modal-close is-large" aria-label="close"
     onClick={()=> history.goBack()}
    ></button>
 </div>

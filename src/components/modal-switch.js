@@ -26,7 +26,7 @@ const ModalSwitch =()=>{
              
             
         </Switch>
-          {background && <Route  path="/image/:id" children={<Modal />} />  }
+          {background && <Route  path= {"/image/:id"} children={<Modal />} />  }
     </div>
     )
 
