@@ -1,7 +1,7 @@
 import {BrowserRouter as Router} from "react-router-dom";
 
-import NavBar from "./components/navbar";
-import Tabs from "./components/tabs";
+import NavBar from "./components/Navbar";
+import Tabs from "./components/Tabs";
 import ModalSwitch from "./components/modal-switch";
 import {MENU} from "./utils";
 

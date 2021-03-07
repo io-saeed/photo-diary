@@ -16,6 +16,7 @@ const randomSlice = createSlice({
         addPhotos:(state, action)=>{
             state.photos.push(...action.payload);
             state.page += 1;
+            state.loading=false;
         },
         getPhotos: state=>{
            state.loading= true;
@@ -36,6 +37,7 @@ export const {removePhoto, addPhotos,getPhotos, setErrors} = randomSlice.actions
 export const selectAllPhotos = state => state.randomPhotos.photos;
 export const selectPage = state => state.randomPhotos.page;
 export const selectPhoto = (state,index) => state.randomPhotos.photos[index];
+export const isloading = (state)=> state.randomPhotos.loading;
 
 export function fetchRandomPhotos(page){
     return async (dispatch)=>{

@@ -3,15 +3,21 @@ import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchRandomPhotos,
          selectAllPhotos, 
-         selectPage } from "../redux/randomSlice";
-import PhotoGallery from "./PhotoGallery"
+         selectPage, isloading } from "../redux/randomSlice";
+import PhotoGallery from "./features/PhotoGallery";
 
 
+
+
+const loadMorePhotos=(pageNum,dispatch)=>{
+    dispatch(fetchRandomPhotos(pageNum));
+}
 
 
 const RandomPhotos =()=>{
     const photos = useSelector(selectAllPhotos)
     const pageNum = useSelector(selectPage);
+    const loading = useSelector(isloading);
     const dispatch = useDispatch();
     const location = useLocation();
 
@@ -29,6 +35,14 @@ const RandomPhotos =()=>{
             allPhotos ={photos}
             location = {location}
          />
+         <div className="buttons is-centered">
+          { loading ? 
+          (<button className="button is-primary is-loading"></button>) :
+           <button  onClick={(e)=> loadMorePhotos(pageNum,dispatch,e)}  className="button is-primary">Load More</button>
+          }
+        
+         </div>
+            
        </div>
     )
 

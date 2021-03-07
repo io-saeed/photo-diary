@@ -6,7 +6,7 @@ import FramedPhoto  from "./FramedPhoto";
 const GalleryContainer=(props)=>{
   
   return(
-    <div className="container">
+    <div className="container mb-5">
         <div className="columns  is-multiline">
          {props.children}
         </div>
@@ -24,7 +24,7 @@ const PhotoGallery=({location, dispatch, allPhotos})=>{
           {  allPhotos.map((photoObj,index)=>(
                  <FramedPhoto location={location}
                     caption={photoObj.alt_description} 
-                    key={index} 
+                    key={photoObj.id} 
                     id={index} 
                     url={photoObj.urls.small} 
                     download={photoObj.links.download}

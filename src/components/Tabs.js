@@ -41,7 +41,6 @@ const Tabs=(props)=>{
     const location = useLocation();
     const { selectFirst, selectSecond, selectThird } = selectTab(location);
 
-    console.log(location.pathname);
     
     return(
     <div className="tabs is-boxed">

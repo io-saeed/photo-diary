@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import {  removePhoto } from "../redux/randomSlice";
+import {  removePhoto } from "../../redux/randomSlice";
 
 //a framed photo in a the gallery
 const FramedPhoto=(
@@ -26,14 +26,14 @@ const FramedPhoto=(
                
                <p className="heading">{ caption }</p>
                 
-            <figure className="image cursor">
-              
-              <Link  to={
-                    {pathname:`/image/${id}` ,
-                     state:{ background: location }                     
-                    }}>
-              <img  src={url} alt="random images"/></Link>
-            </figure>
+                <figure className="image cursor">
+                  
+                  <Link  to={
+                        {pathname:`/image/${id}` ,
+                         state:{ background: location }                     
+                        }}>
+                  <img  src={url} alt="random images"/></Link>
+                </figure>
             </div>
             
         

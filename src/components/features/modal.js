@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const Modal=()=>{
   let history = useHistory();
-  const {id} = useParams()
+  const id = parseInt(useParams().id)
   const photo = useSelector((state) => state.randomPhotos.photos[id].urls.small);
   return(
   <div className="modal is-active">
@@ -13,9 +13,8 @@ const Modal=()=>{
           <img className="display-pic" src={photo} alt=""/>
         </p>
       </div>
-  <button className="modal-close is-large" aria-label="close"
-    onClick={()=> history.goBack()}
-   ></button>
+    <button className="modal-close is-large" aria-label="close"
+        onClick={()=> history.goBack()}></button>
 </div>
    )
 }
