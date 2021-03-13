@@ -4,10 +4,9 @@ import {
     Route, 
     Redirect,
     useRouteMatch} from "react-router-dom";
-import RandomPhotos from "./RandomPhotos";
-import NaturePhotos from "./NaturePhotos";
-import PeoplePhotos from "./PeoplePhotos";
-import Modal from "./features/modal";
+
+import Modal from "./features/Modal";
+import Tabs from "./Tabs";
 
 const ModalSwitch =()=>{
     let location = useLocation();
@@ -21,16 +20,12 @@ const ModalSwitch =()=>{
             <Route exact path="/" >
                 <Redirect to="/category/random"/>
             </Route>
-            <Route path="/category/random" >
-                <RandomPhotos />
+            <Route path="/category" >
+                <Tabs />
             </Route>  
-            <Route path="/category/nature" >
-                <NaturePhotos />
+            <Route path="/search" >
+                <h1 className="title">seach query goes here</h1>
             </Route>  
-            <Route path="/category/people" >
-                <PeoplePhotos />
-            </Route>  
-             
             
         </Switch>
           {background && <Route  path= {`/image/:id`} children={<Modal />} />  }

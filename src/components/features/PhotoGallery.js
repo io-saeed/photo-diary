@@ -3,7 +3,7 @@ import FramedPhoto  from "./FramedPhoto";
 
 
 //to display picuture in columns and row
-const GalleryContainer=(props)=>{
+const Gallery=(props)=>{
   
   return(
     <div className="container mb-5">
@@ -15,23 +15,29 @@ const GalleryContainer=(props)=>{
 
 }
 
+const ListAllPhotos=({allPhotos,dispatch,location})=>{
+  const photos = allPhotos.map(
+        (photoObj,index)=>(
+         <FramedPhoto location={location}
+            caption={photoObj.alt_description} 
+            key={photoObj.id} 
+            id={index} 
+            url={photoObj.urls.small} 
+            download={photoObj.links.download}
+            dispatch={dispatch} /> ));
+  return photos;
+}
 
 //Photogallery with collection of photos
-const PhotoGallery=({location, dispatch, allPhotos})=>{
+const PhotoGallery=(props)=>{
     
     return(
-        <GalleryContainer>
-          {  allPhotos.map((photoObj,index)=>(
-                 <FramedPhoto location={location}
-                    caption={photoObj.alt_description} 
-                    key={photoObj.id} 
-                    id={index} 
-                    url={photoObj.urls.small} 
-                    download={photoObj.links.download}
-                    dispatch={dispatch} /> )
-            )}
-           
-        </GalleryContainer>
+        <Gallery>
+         <ListAllPhotos 
+            allPhotos={props.allPhotos} 
+            dispatch={props.dispatch} 
+            location={props.location}/>  
+        </Gallery>
     )
 }
 export default PhotoGallery;

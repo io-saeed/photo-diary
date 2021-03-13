@@ -5,13 +5,12 @@ import { fetchRandomPhotos,
          selectAllPhotos, 
          selectPage, isloading } from "../redux/randomSlice";
 import PhotoGallery from "./features/PhotoGallery";
+import FetchPhotosButton from "./features/FetchPhotosButton"; 
 
 
 
 
-const loadMorePhotos=(pageNum,dispatch)=>{
-    dispatch(fetchRandomPhotos(pageNum));
-}
+
 
 
 const RandomPhotos =()=>{
@@ -34,14 +33,13 @@ const RandomPhotos =()=>{
             dispatch={dispatch}
             allPhotos ={photos}
             location = {location}
-         />
-         <div className="buttons is-centered">
-          { loading ? 
-          (<button className="button is-primary is-loading"></button>) :
-           <button  onClick={(e)=> loadMorePhotos(pageNum,dispatch,e)}  className="button is-primary">Load More</button>
-          }
-        
-         </div>
+          />
+          <FetchPhotosButton 
+            page={pageNum}
+            fetch ={fetchRandomPhotos}
+            dispatch={dispatch}
+            progress={loading}
+          />
             
        </div>
     )

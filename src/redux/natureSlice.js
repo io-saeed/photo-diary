@@ -5,7 +5,7 @@ const natureSlice = createSlice({
     name:"naturePhotos",
     initialState:{
         photos:[],
-        page: 1,
+        page: 4,
         loading:false,
         hasErrors: false,
     },
@@ -16,6 +16,7 @@ const natureSlice = createSlice({
         addPhotos:(state, action)=>{
             state.photos.push(...action.payload);
             state.page += 1;
+            state.loading =false;
         },
         getPhotos: state=>{
            state.loading= true;
@@ -34,12 +35,13 @@ export const {removePhoto, addPhotos,getPhotos, setErrors} = natureSlice.actions
 export const selectAllPhotos = state => state.naturePhotos.photos;
 export const selectPage = state => state.naturePhotos.page;
 export const selectPhoto = (state,index) => state.naturePhotos.photos[index];
+export const isloading = (state)=> state.naturePhotos.loading;
 
 export function fetchNaturePhotos(page){
     return async (dispatch)=>{
           dispatch(getPhotos());
           try{
-              const data = await unsplash.photos.list({page:4});
+              const data = await unsplash.photos.list({page:page});
               dispatch(addPhotos(data.response.results));
           }catch(error){
               dispatch(setErrors());
