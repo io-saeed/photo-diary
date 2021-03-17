@@ -31,8 +31,8 @@ const App = (props) =>{
    return(
        <>
        <Body>
-           <NavBar logo="https://bulma.io/images/bulma-logo.png" menu={MENU}/>
            <Router>
+             <NavBar logo="https://bulma.io/images/bulma-logo.png" menu={MENU}/>
              <ModalSwitch  /> { /* to switch  layout route*/}
            </Router> 
        </Body>

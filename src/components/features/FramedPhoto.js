@@ -11,7 +11,7 @@ const FramedPhoto=(
       dispatch,
       download
     })=>{
-  
+    
   const remove=(index,_)=>{
    dispatch(removePhoto(index));
   } 

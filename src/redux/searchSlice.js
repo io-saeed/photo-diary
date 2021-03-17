@@ -1,11 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 import unsplash from "../unsplash";
 
-const randomSlice = createSlice({
-    name:"randomPhotos",
+const searchSlice = createSlice({
+    name:"searchPhotos",
     initialState:{
         photos:[],
         page: 1,
+        query:"",
         loading:false,
         hasErrors: false,
     },
@@ -14,7 +15,7 @@ const randomSlice = createSlice({
             state.photos = state.photos.filter((_,index)=>index!==action.payload); // underscore means ignore value
         },
         addPhotos:(state, action)=>{
-            state.photos.push(...action.payload);
+            state.photos =action.payload;
             state.page += 1;
             state.loading=false;
         },
@@ -22,6 +23,10 @@ const randomSlice = createSlice({
            state.loading= true;
             
         },
+        setQuery: (state, action)=>{
+           state.query= action.payload;
+        }
+        ,
         setErrors: state=>{
             state.loading=false;
             state.hasErrors= true;
@@ -33,19 +38,19 @@ const randomSlice = createSlice({
 
 })
 
-export const {removePhoto, addPhotos,getPhotos, setErrors} = randomSlice.actions;
-export const selectAllPhotos = state => state.randomPhotos.photos;
-export const selectPage = state => state.randomPhotos.page;
-export const selectPhoto = (state,index) => state.randomPhotos.photos[index];
-export const isloading = (state)=> state.randomPhotos.loading;
+export const {removePhoto, addPhotos,getPhotos, setErrors,setQuery} = searchSlice.actions;
+export const selectAllPhotos = state => state.searchPhotos.photos;
+export const selectPage = state => state.searchPhotos.page;
+export const selectPhoto = (state,index) => state.searchPhotos.photos[index];
+export const isloading = (state)=> state.searchPhotos.loading;
+export const getQuery = (state)=> state.searchPhotos.query;
 
-export function fetchRandomPhotos(page){
+export function fetchSearchPhotos(query="sport"){
     return async (dispatch)=>{
           dispatch(getPhotos());
           try{
-              const data = await unsplash.photos.list({page:page})
+              const data = await unsplash.search.getPhotos({query: query});
               dispatch(addPhotos(data.response.results));
-             
           }catch(error){
               dispatch(setErrors());
               
@@ -54,4 +59,4 @@ export function fetchRandomPhotos(page){
 
 }
 
-export default randomSlice.reducer;
+export default searchSlice.reducer;

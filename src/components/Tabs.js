@@ -46,7 +46,6 @@ const TabSelector =({pathname})=>{
 }
 
 const TabSwitch = ({path})=>{
-    console.log(path);
     return(
     <Switch>
         <Route path={`${path}/random`}>

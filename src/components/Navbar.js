@@ -1,11 +1,13 @@
-import {useState} from "react";
+import { useState } from "react";
+import { Link, useHistory} from "react-router-dom";
+
 
 const NavBar =(props)=>{
  return(
     <nav className="navbar is-white" role="navigation" aria-label="main navigation">
      <div className="container">
-     {props.children}
-    </div>
+        {props.children}
+     </div>
     </nav>
     );
 }
@@ -13,12 +15,12 @@ const NavBarBrand =({logo,navStatus,handleClick})=>{
     return(
         <div className="navbar-brand">
           
-          <a className="navbar-item" href="/">
+          <Link className="navbar-item" to="/">
             <img src={logo}
             alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" 
             width="112" 
             height="28"/>
-          </a>
+          </Link>
         </div>
         
       );
@@ -34,16 +36,29 @@ const NavBarBrand =({logo,navStatus,handleClick})=>{
 
 
 const NavBarSearch =()=>{
+   const history = useHistory();
+   const [query, setQuery] = useState("");
+   const handleChange =(event)=>{
+       setQuery(event.target.value);
+       console.log(event.target.value);
+   }
+   const path = `/search?photos=${query}`;
+   const handleClick=(event)=>{
+        history.push(path);
+        
+   }
+
     return(
     <div className="navbar-end"><div className="navbar-item">
-        <div className="field has-addons">
-          <div className="control">
-            <input className="input rounded" type="text" placeholder="Text input"/>
-          </div>
-         <p className="control">
-            <button className="button">Search</button>
-          </p>
-        </div>              
+            <div className="field has-addons">
+              <div className="control">
+                <input name="photos" className="input rounded" 
+                type="text" placeholder="Text input" onChange={(e)=>handleChange(e)} />
+              </div>
+             <p className="control">
+                <button onClick={(e)=>handleClick(e)} className="button">Search</button>
+              </p>
+            </div>         
    </div></div>
     )
 }
