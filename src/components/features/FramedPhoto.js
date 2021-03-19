@@ -1,34 +1,17 @@
 import { Link } from "react-router-dom";
-import {  removePhoto as removeRandomPhotos } from "../../redux/randomSlice";
-import {  removePhoto as removeNaturePhotos } from "../../redux/natureSlice";
-
-
-// select photo remove base on path 
-const selectPhoto =(index, {pathname} ,dispatch)=>{
-    switch(pathname){
-        case "/category/random":
-                dispatch(removeRandomPhotos(index));
-        break;
-         case "/category/nature":
-                dispatch(removeNaturePhotos(index));
-        break;
-        default:
-                dispatch(removeRandomPhotos(index)); 
-    }
-}
 
 //a framed photo in a the gallery
 const FramedPhoto=(
     { url,
       caption,
-      location,
+      removeFrame,
       id, 
-      dispatch,
-      download
+      download,
+      location
     })=>{
     
   const removePhoto=(index,_)=>{
-        selectPhoto(index, location,dispatch);
+       removeFrame(index);
   } 
 
   return(

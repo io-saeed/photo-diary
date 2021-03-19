@@ -15,16 +15,16 @@ const Gallery=(props)=>{
 
 }
 
-const ListAllPhotos=({allPhotos,dispatch,location})=>{
+const ListAllPhotos=({allPhotos,removePhoto,location})=>{
   const photos = allPhotos.map(
         (photoObj,index)=>(
-         <FramedPhoto location={location}
+         <FramedPhoto removeFrame={removePhoto}
             caption={photoObj.alt_description} 
             key={photoObj.id} 
             id={index} 
             url={photoObj.urls.small} 
             download={photoObj.links.download}
-            dispatch={dispatch} /> ));
+            location={location} /> ));
   return photos;
 }
 
@@ -36,7 +36,8 @@ const PhotoGallery=(props)=>{
          <ListAllPhotos 
             allPhotos={props.allPhotos} 
             dispatch={props.dispatch} 
-            location={props.location}/>  
+            location={props.location}
+            removePhoto={props.removePhoto}/>  
         </Gallery>
     )
 }

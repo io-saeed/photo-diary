@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import {useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import PhotoGallery from "./features/PhotoGallery";
-import { fetchNaturePhotos,selectAllPhotos,selectPage, isloading } from "../redux/natureSlice";
+import { fetchNaturePhotos,
+          selectAllPhotos,
+          selectPage,isloading ,removePhoto} from "../redux/natureSlice";
 import FetchPhotosButton from "./features/FetchPhotosButton";
 
 const NaturePhotos = () =>{
@@ -12,6 +14,9 @@ const NaturePhotos = () =>{
     const loading = useSelector(isloading);
     const pageNum = useSelector(selectPage);
 
+    const removeFramedPhoto=(index)=>{
+        dispatch(removePhoto(index));
+    }
 
     useEffect(()=>{
        if(pageNum === 4){
@@ -21,9 +26,9 @@ const NaturePhotos = () =>{
     return(
       <div>
        <PhotoGallery
-            dispatch={dispatch}
             allPhotos ={photos}
-            location = {location}
+            removePhoto = {removeFramedPhoto}
+            location ={location}
         />
         <FetchPhotosButton
             page={pageNum}

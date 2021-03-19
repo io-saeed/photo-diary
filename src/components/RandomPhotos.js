@@ -3,14 +3,9 @@ import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchRandomPhotos,
          selectAllPhotos, 
-         selectPage, isloading } from "../redux/randomSlice";
+         selectPage, isloading, removePhoto} from "../redux/randomSlice";
 import PhotoGallery from "./features/PhotoGallery";
 import FetchPhotosButton from "./features/FetchPhotosButton"; 
-
-
-
-
-
 
 
 const RandomPhotos =()=>{
@@ -19,6 +14,10 @@ const RandomPhotos =()=>{
     const loading = useSelector(isloading);
     const dispatch = useDispatch();
     const location = useLocation();
+
+    const removeFramedPhoto=(index)=>{
+        dispatch(removePhoto(index));
+    }
 
     useEffect(()=>{
         if(pageNum === 1){
@@ -30,9 +29,9 @@ const RandomPhotos =()=>{
     return(
        <div>
           <PhotoGallery
-            dispatch={dispatch}
             allPhotos ={photos}
-            location = {location}
+            removePhoto = {removeFramedPhoto}
+            location ={location}
           />
           <FetchPhotosButton 
             page={pageNum}
