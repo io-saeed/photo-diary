@@ -20,7 +20,7 @@ const ListAllPhotos=({allPhotos,removePhoto,location})=>{
         (photoObj,index)=>(
          <FramedPhoto removeFrame={removePhoto}
             caption={photoObj.alt_description} 
-            key={photoObj.id} 
+            key={index} 
             id={index} 
             url={photoObj.urls.small} 
             download={photoObj.links.download}

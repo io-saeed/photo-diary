@@ -1,9 +1,9 @@
 const PeoplePhotos = () =>{
  return(
-    <div>
-       <h1 className="title"> Hello People</h1>
+    <div className="container">
+       <h1 className="subtitle"> Hi there! this is just a demo app</h1>
     </div>
-   ) 
+   )
 
 }
 

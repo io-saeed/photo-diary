@@ -19,7 +19,7 @@ const FramedPhoto=(
             <div className="box">
                <div className="relative">
                 <i onClick={(e)=>removePhoto(id,e)} className="delete"></i> 
-                <a className="button is-small is-outlined top-right" href={download}>Download</a>    
+                <a className="button is-small is-outlined top-right" href={download} download>Download</a>    
                </div>
                
                <p className="heading">{ caption }</p>
