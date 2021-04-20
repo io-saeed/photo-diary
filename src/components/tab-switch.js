@@ -1,11 +1,11 @@
 import {
-    Link, 
-    useLocation, 
+    Link,
+    useLocation,
     Switch,
     Route, useRouteMatch,Redirect } from "react-router-dom";
-import RandomPhotos from "./RandomPhotos";
-import NaturePhotos from "./NaturePhotos";
-import PeoplePhotos from "./PeoplePhotos";
+import RandomPhotos from "./first-tab-photos";
+import NaturePhotos from "./second-tab-photos";
+import PeoplePhotos from "./third-tab-photos";
 
 
 const RANDOM = "/category/random";
@@ -19,30 +19,30 @@ const TabSelector =({pathname})=>{
          return {
             selectFirst : "is-active",
             selectSecond :"",
-            selectThird :"",    
+            selectThird :"",
          }
-  
+
        case NATURE:
          return {
             selectFirst : "",
             selectSecond :"is-active",
-            selectThird :"",    
+            selectThird :"",
          }
-        
+
        case PEOPLE:
          return {
             selectFirst : "",
             selectSecond :"",
-            selectThird :"is-active",    
+            selectThird :"is-active",
          }
         default:
             return {
             selectFirst : "is-active",
             selectSecond :"",
-            selectThird :"",    
+            selectThird :"",
          }
     }
-    
+
 
 }
 
@@ -67,7 +67,7 @@ const Tabs=(props)=>{
     const {path, url} = useRouteMatch();
     const { selectFirst, selectSecond, selectThird } = TabSelector(location);
 
-    
+
     return(
     <>
         <div className="tabs is-boxed">
@@ -80,8 +80,8 @@ const Tabs=(props)=>{
           </div>
         </div>
         <TabSwitch path={path} />
-       
-    </>       
+
+    </>
     );
 }
 export default Tabs;

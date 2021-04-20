@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import randomReducer from "./randomSlice";
-import natureReducer from "./natureSlice";
-import searchReducer from "./searchSlice";
+import randomReducer from "./random-slice";
+import natureReducer from "./nature-slice";
+import searchReducer from "./search-slice";
 
 export default configureStore({
     reducer:{

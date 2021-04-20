@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import {useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import PhotoGallery from "./features/PhotoGallery";
+import PhotoGallery from "./features/photo-gallery";
 import { fetchNaturePhotos,
           selectAllPhotos,
-          selectPage,isloading ,removePhoto} from "../redux/natureSlice";
-import FetchPhotosButton from "./features/FetchPhotosButton";
+          selectPage,isloading ,removePhoto} from "../redux/nature-slice";
+import FetchPhotosButton from "./features/fetch-photos-button";
 
 const NaturePhotos = () =>{
     const location = useLocation();
@@ -37,7 +37,7 @@ const NaturePhotos = () =>{
             progress={loading}
         />
       </div>
-    ) 
+    )
 
 }
 

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import {useDispatch, useSelector } from "react-redux";
-import PhotoGallery from "./features/PhotoGallery";
-import {selectAllPhotos, fetchSearchPhotos } from "../redux/searchSlice";
+import PhotoGallery from "./features/photo-gallery";
+import {selectAllPhotos, fetchSearchPhotos } from "../redux/search-slice";
 import { Link } from "react-router-dom";
 
 function useQuery() {

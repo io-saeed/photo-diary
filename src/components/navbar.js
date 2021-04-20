@@ -14,15 +14,15 @@ const NavBar =(props)=>{
 const NavBarBrand =({logo,navStatus,handleClick})=>{
     return(
         <div className="navbar-brand">
-          
+
           <Link className="navbar-item" to="/">
             <img src={logo}
-            alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" 
-            width="112" 
+            alt="Bulma: Free, open source, and modern CSS framework based on Flexbox"
+            width="112"
             height="28"/>
           </Link>
         </div>
-        
+
       );
     }
 
@@ -40,25 +40,21 @@ const NavBarSearch =()=>{
    const [query, setQuery] = useState("");
    const handleChange =(event)=>{
        setQuery(event.target.value);
-       console.log(event.target.value);
    }
    const path = `/search?photos=${query}`;
    const handleClick=(event)=>{
         history.push(path);
-        
+
    }
 
     return(
     <div className="navbar-end"><div className="navbar-item">
             <div className="field has-addons">
               <div className="control">
-                <input name="photos" className="input rounded" 
-                type="text" placeholder="Text input" onChange={(e)=>handleChange(e)} />
+                <input name="photos" className="input is-rounded"
+                type="text" placeholder="search..." onChange={(e)=>handleChange(e)} />
               </div>
-             <p className="control">
-                <button onClick={(e)=>handleClick(e)} className="button">Search</button>
-              </p>
-            </div>         
+            </div>
    </div></div>
     )
 }
@@ -73,7 +69,7 @@ const Nav=(props)=>{
        <NavBar>
            <NavBarBrand logo={props.logo} handleClick={handle} navStatus={nav_drawer}/>
            <NavBarSearch />
-       </NavBar>  
+       </NavBar>
     )
 
 }

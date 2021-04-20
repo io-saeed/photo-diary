@@ -2,10 +2,10 @@ import {useLocation} from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchRandomPhotos,
-         selectAllPhotos, 
-         selectPage, isloading, removePhoto} from "../redux/randomSlice";
-import PhotoGallery from "./features/PhotoGallery";
-import FetchPhotosButton from "./features/FetchPhotosButton"; 
+         selectAllPhotos,
+         selectPage, isloading, removePhoto} from "../redux/random-slice";
+import PhotoGallery from "./features/photo-gallery";
+import FetchPhotosButton from "./features/fetch-photos-button";
 
 
 const RandomPhotos =()=>{
@@ -23,7 +23,7 @@ const RandomPhotos =()=>{
         if(pageNum === 1){
             dispatch(fetchRandomPhotos(pageNum));
         }
-        
+
     },[dispatch,pageNum])
 
     return(
@@ -33,13 +33,13 @@ const RandomPhotos =()=>{
             removePhoto = {removeFramedPhoto}
             location ={location}
           />
-          <FetchPhotosButton 
+          <FetchPhotosButton
             page={pageNum}
             fetch ={fetchRandomPhotos}
             dispatch={dispatch}
             progress={loading}
           />
-            
+
        </div>
     )
 

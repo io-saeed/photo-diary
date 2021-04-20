@@ -1,6 +1,5 @@
 import {BrowserRouter as Router} from "react-router-dom";
-
-import NavBar from "./components/Navbar";
+import NavBar from "./components/navbar";
 import ModalSwitch from "./components/modal-switch";
 import {MENU} from "./utils";
 
@@ -20,11 +19,11 @@ const Footer=()=>{
       <footer className="footer">
           <div className="content has-text-centered">
             <p>
-              <strong>All right reserved</strong> by <a href="https://saeed-wahab.github.io">Saeed</a>. The source code is on 
-              <a href="http://github.com/saeed-wahab/photo-dairy"> Github</a>. 
+              <strong>All right reserved</strong> by <a href="https://saeed-wahab.github.io">Saeed</a>. The source code is on
+              <a href="http://github.com/saeed-wahab/photo-dairy"> Github</a>.
             </p>
           </div>
-      </footer>)  
+      </footer>)
 
 }
 const App = (props) =>{
@@ -34,7 +33,7 @@ const App = (props) =>{
            <Router>
              <NavBar logo="https://bulma.io/images/bulma-logo.png" menu={MENU}/>
              <ModalSwitch  /> { /* to switch  layout route*/}
-           </Router> 
+           </Router>
        </Body>
        <Footer />
       </>

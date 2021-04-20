@@ -8,23 +8,22 @@ const PEOPLE = "/category/people";
 const selectPhoto =(pathname,id)=>{
     switch(pathname){
        case RANDOM:
-         return( (state) => state.randomPhotos.photos[id].urls.small)
-       
-  
+         return( (state) => state.randomPhotos.photos[id].urls.regular)
+
+
        case NATURE:
-         return((state) => state.naturePhotos.photos[id].urls.small);
-        
+         return((state) => state.naturePhotos.photos[id].urls.regular);
+
        case PEOPLE:
-         return ((state) => state.peoplePhotos.photos[id].urls.small)
+         return ((state) => state.peoplePhotos.photos[id].urls.regular);
         default:
-            
+
     }
-    
+
 
 }
 const Modal=({path})=>{
   let history = useHistory();
-  console.log(path);
   const id = parseInt(useParams().id)
   const photo = useSelector(selectPhoto(path,id));
   return(
