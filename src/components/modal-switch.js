@@ -4,7 +4,7 @@ import {
     Route,
     Redirect} from "react-router-dom";
 
-import Modal from "./features/modal";
+import Modal from "./layouts/modal";
 import TabSwitch from "./tab-switch";
 import Search from "./search-result";
 

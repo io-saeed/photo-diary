@@ -4,8 +4,8 @@ import { useDispatch,useSelector } from "react-redux";
 import { fetchRandomPhotos,
          selectAllPhotos,
          selectPage, isloading, removePhoto} from "../redux/random-slice";
-import PhotoGallery from "./features/photo-gallery";
-import FetchPhotosButton from "./features/fetch-photos-button";
+import PhotoGallery from "./layouts/photo-gallery";
+import FetchPhotosButton from "./layouts/fetch-photos-button";
 
 
 const RandomPhotos =()=>{

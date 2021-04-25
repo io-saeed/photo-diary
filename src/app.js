@@ -1,7 +1,6 @@
 import {BrowserRouter as Router} from "react-router-dom";
-import NavBar from "./components/navbar";
+import NavBar from "./components/layouts/navbar";
 import ModalSwitch from "./components/modal-switch";
-import {MENU} from "./utils";
 
 
 
@@ -31,7 +30,7 @@ const App = (props) =>{
        <>
        <Body>
            <Router>
-             <NavBar logo="https://bulma.io/images/bulma-logo.png" menu={MENU}/>
+             <NavBar logo="https://bulma.io/images/bulma-logo.png" />
              <ModalSwitch  /> { /* to switch  layout route*/}
            </Router>
        </Body>

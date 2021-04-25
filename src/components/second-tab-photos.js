@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import {useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import PhotoGallery from "./features/photo-gallery";
+import PhotoGallery from "./layouts/photo-gallery";
 import { fetchNaturePhotos,
           selectAllPhotos,
           selectPage,isloading ,removePhoto} from "../redux/nature-slice";
-import FetchPhotosButton from "./features/fetch-photos-button";
+import FetchPhotosButton from "./layouts/fetch-photos-button";
 
 const NaturePhotos = () =>{
     const location = useLocation();
