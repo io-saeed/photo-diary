@@ -1,6 +1,5 @@
 import { categoryColumns } from "../utils";
 
-
 export function removePhotoReducer(state, action){
     state.photos = state.photos.filter((_,index)=>index!==action.payload); // underscore means ignore value
 }

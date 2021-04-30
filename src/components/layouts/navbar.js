@@ -38,9 +38,10 @@ const NavBarBrand =({logo,navStatus,handleClick})=>{
 const NavBarSearch =()=>{
    const history = useHistory();
    const [query, setQuery] = useState("");
-   const handleChange =(event)=>{
-       setQuery(event.target.value);
-   }
+   // const handleChange =(event)=>{
+   //     setQuery(event.target.value);
+   // }
+   
    const path = `/search?photos=${query}`;
    const handleClick=(event)=>{
         history.push(path);

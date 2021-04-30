@@ -15,7 +15,7 @@ const FramedPhoto=(
   }
 
   return(
-       <div className="column is-narrow">
+       <div className="column is-4">
             <div className="box">
                <div className="relative">
                 <i onClick={(e)=>removePhoto(id,e)} className="delete"></i>

@@ -5,7 +5,7 @@ import {
   addPhotosReducer,
   getPhotosReducer,
   setErrorsReducer
-} from "./reducers.js";
+} from "./category-actions.js";
 
 
 
