@@ -3,7 +3,8 @@ import unsplash from "../unsplash";
 import {
   addPhotosReducer,
   setErrorsReducer,
-  getPhotosReducer } from "./gallery-actions";
+  getPhotosReducer,
+  unMountValuesReducer} from "./gallery-actions";
 
 const initializeState={
     photos:[],
@@ -19,13 +20,15 @@ const gallerySlice = createSlice({
       getPhotos:getPhotosReducer,
       addPhotos:addPhotosReducer,
       setError:setErrorsReducer,
+      unMount :unMountValuesReducer
   }
 
 });
 
-export const { getPhotos, addPhotos,setError } = gallerySlice.actions;
+export const { getPhotos, addPhotos,setError,unMount } = gallerySlice.actions;
 export const selectAllPhotos = state => state.galleryPhotos.photos;
 export const selectPage = state=> state.galleryPhotos.page;
+export const loadStatus = state=> state.galleryPhotos.loading;
 
 export function fetchGalleryPhotos(page, id){
     return async (dispatch)=>{
@@ -35,6 +38,7 @@ export function fetchGalleryPhotos(page, id){
               dispatch(addPhotos(data.response.results));
           }catch(error){
               dispatch(setError());
+              console.log(error);
         }
       }
 

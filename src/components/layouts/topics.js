@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import Figure from "./layouts/figure";
+import Figure from "./figure";
 import { useDispatch,useSelector } from "react-redux";
-import { fetchPhotoCategories,selectPage} from "../redux/category-slice";
+import { fetchPhotoCategories,selectPage} from "../../redux/category-slice";
 
 
 
 
 const ListColumnPhotos =({data})=>{
-  console.log(data);
+
    let list =
    data.map(
      (item,key)=>
@@ -25,7 +25,7 @@ const ListColumnPhotos =({data})=>{
   )
 }
 const ListCategories=({data})=>{
-  console.log(data);
+
   let list = data.map(
     (column,index)=>(
       <div key={index} className="column is-4">
@@ -40,17 +40,15 @@ const Topics=(props)=>{
   const dispatch = useDispatch();
   const pageNum = useSelector(selectPage);
 
-
-
   useEffect(()=>{
     if(pageNum===1){
       dispatch(fetchPhotoCategories());
     }
-  });
+  },[pageNum,dispatch]);
 
   return(
     <div className="container mt-3 home">
-      <div><p id="diary" className="title is-1 has-text-centered">~ Photo Dairy ~</p></div>
+      <div><p id="" className="title is-1 has-text-centered diary-title">~ Photo Dairy ~</p></div>
       <div className="columns p-4">
         {props.children}
       </div>

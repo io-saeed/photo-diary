@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Raleway:ital,wght@1,100&display=swap');
 
-#diary{
+.diary-title{
   font-family: 'Parisienne', cursive;
+  text-transform: capitalize;
 }
 @media (min-width:879px) {
     .home{
@@ -13,6 +14,10 @@
 }
 .home .topic{
   font-family: 'Raleway', sans-serif;
+}
+.gallery img{
+  max-height: unset;
+  height: 400px;
 }
 .relative{
  position:relative;

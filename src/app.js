@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LandingPage  from "./components/index";
 import Gallery from "./components/gallery";
 
-const Hello=()=>(<h1>hello</h1>);
+
 const App =()=>{
   return(
     <Router>

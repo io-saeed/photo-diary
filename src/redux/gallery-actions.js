@@ -13,3 +13,9 @@ export function setErrorsReducer(state){
     state.loading=false;
     state.hasErrors= true;
 }
+export function unMountValuesReducer(state){
+   state.photos =[];
+   state.page =1;
+   state.loading=false;
+   state.hasErrors=false;
+}

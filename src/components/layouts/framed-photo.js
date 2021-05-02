@@ -4,28 +4,15 @@ import { Link } from "react-router-dom";
 const FramedPhoto=(
     { url,
       caption,
-      removeFrame,
       id,
-      download,
       location
     })=>{
-
-  const removePhoto=(index,_)=>{
-       removeFrame(index);
-  }
 
   return(
        <div className="column is-4">
             <div className="box">
-               <div className="relative">
-                <i onClick={(e)=>removePhoto(id,e)} className="delete"></i>
-                <a className="button is-small is-outlined top-right" href={download} >Download</a>
-               </div>
-
-               <p className="heading">{ caption }</p>
 
                 <figure className="image cursor">
-
                   <Link  to={
                         {pathname:`/image/${id}` ,
                          state:{ background: location }
