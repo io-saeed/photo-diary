@@ -15,7 +15,9 @@ export function getPhotosReducer(state){
 }
 
 export function setErrorsReducer(state){
-    state.loading=false;
-    state.hasErrors= true;
+    state.loading={
+      status:false,
+      hasErrors:true
+    }
 
 }

@@ -1,13 +1,14 @@
 import {useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { Topics, ListCategories } from "./layouts/topics";
-import { selectAllCategory } from "../redux/category-slice";
-import { unMount,selectPage } from "../redux/gallery-slice";
+import { Topics, ListCategories } from "../layouts/topics";
+import { selectAllCategory } from "../../redux/category-slice";
+import { unMount,selectPage } from "../../redux/gallery-slice";
 
 
 
 const Landing =()=>{
   const allCategory = useSelector(selectAllCategory);
+
   const page = useSelector(selectPage);
   const dispatch= useDispatch();
 

@@ -2,16 +2,25 @@
 export function addPhotosReducer(state, action){
     state.photos.push(...action.payload);
     state.page += 1;
-    state.loading =false;
+    state.loading ={
+      status:false,
+      hasErrors:false
+    };
 }
 
 export function getPhotosReducer(state){
-   state.loading= true;
+   state.loading={
+     status:true,
+     hasErrors:false
+   }
 }
 
 export function setErrorsReducer(state){
-    state.loading=false;
-    state.hasErrors= true;
+    state.loading={
+      status:false,
+      hasErrors:true
+    }
+
 }
 export function unMountValuesReducer(state){
    state.photos =[];

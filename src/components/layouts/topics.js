@@ -48,7 +48,7 @@ const Topics=(props)=>{
 
   return(
     <div className="container mt-3 home">
-      <div><p id="" className="title is-1 has-text-centered diary-title">~ Photo Dairy ~</p></div>
+      <div><p id="" className="title is-1 has-text-centered diary-title">~ Photo Diary ~</p></div>
       <div className="columns p-4">
         {props.children}
       </div>

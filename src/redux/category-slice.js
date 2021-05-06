@@ -12,8 +12,11 @@ import {
 const initializeState ={
     photos:[],
     page: 1,
-    loading:false,
-    hasErrors: false,
+    loading:{
+      status:false,
+      hasErrors: false,
+    },
+
 }
 
 
@@ -33,14 +36,22 @@ const categorySlice = createSlice({
 
 export const {removePhoto, addPhotos,getPhotos, setErrors,setQuery} = categorySlice.actions;
 export const selectAllCategory = state => state.photoCategory.photos;
+
 export const selectPage = state => state.photoCategory.page;
 export const selectPhoto = (state,index) => state.categorySlice.photos[index];
 export const isloading = (state)=> state.categorySlice.loading;
 export const getQuery = (state)=> state.searchPhotos.query;
 
+export const orderCategory = state => {
+   if(state.photoCategory.photos.length >0){
+     return (state.photoCategory.photos.reduce((x,y)=>[...x, ...y]));
+   }
+   return [];
+
+}
+
 export function fetchPhotoCategories(){
     return async (dispatch)=>{
-          console.log("Started");
           dispatch(getPhotos());
           try{
               const data = await unsplash.topics.list({

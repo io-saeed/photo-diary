@@ -9,8 +9,11 @@ import {
 const initializeState={
     photos:[],
     page: 1,
-    loading:false,
-    hasErrors: false,
+    loading:{
+      status:false,
+      hasErrors: false,
+    },
+
 }
 
 const gallerySlice = createSlice({
@@ -38,7 +41,6 @@ export function fetchGalleryPhotos(page, id){
               dispatch(addPhotos(data.response.results));
           }catch(error){
               dispatch(setError());
-              console.log(error);
         }
       }
 

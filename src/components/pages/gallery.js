@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 import { useLocation,useParams, Link } from "react-router-dom";
 import {useDispatch, useSelector } from "react-redux";
-import FramedPhoto from "./layouts/framed-photo";
-import FetchPhotosButton from "./layouts/fetch-photos-button";
-import { selectAllCategory } from "../redux/category-slice";
+import FramedPhoto from "../layouts/framed-photo";
+import FetchPhotosButton from "../layouts/fetch-photos-button";
+import { orderCategory } from "../../redux/category-slice";
 import {
   selectPage,
   selectAllPhotos,
   fetchGalleryPhotos,
-  loadStatus, } from "../redux/gallery-slice";
+  loadStatus,
+  unMount
+ } from "../../redux/gallery-slice";
 
 
 const Gallery =(props)=>{
@@ -38,11 +40,23 @@ const GridPhotos =({list})=>{
 
 }
 
-const GalleryNav=()=>{
-  const topics = useSelector(selectAllCategory);
-  console.log(topics);
+const GalleryNav=({page,dispatch})=>{
+  const handleClick=()=>{
+    if(page!==1){
+       dispatch(unMount()); // to reset gallery content it has unMount
+    }
+  }
+  const order = useSelector(orderCategory);
+  const otherButtons =order.map((item,i)=>{
+    return (<Link onClick={()=>handleClick()}
+            key={1} to={`/category/${item.slug}`}
+            className="button">{item.slug}</Link>)
+  })
   return(
-    <div className="buttons is-centered"><Link className="button" to="/">Home</Link></div>
+    <div className="buttons is-centered">
+    <Link className="button" to="/">Home</Link>
+    {otherButtons}
+    </div>
   )
 }
 
@@ -56,6 +70,7 @@ const GalleryWithPhotos =()=>{
   const photoDocs = useSelector(selectAllPhotos);
   const page = useSelector(selectPage);
   const fetchStatus = useSelector(loadStatus);
+
   const dispatch = useDispatch();
   const {id} = useParams();
 
@@ -72,7 +87,7 @@ const GalleryWithPhotos =()=>{
   return(
     <Gallery>
       <GalleryTitle caption={id} />
-      <GalleryNav />
+      <GalleryNav page={page} dispatch={dispatch}/>
 
       <GridPhotos list={photoDocs}/>
       <FetchPhotosButton
