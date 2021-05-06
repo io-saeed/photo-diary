@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Footer from "./layouts/footer"
 import LandingPage  from "./pages/index";
 import Gallery from "./pages/gallery";
 
@@ -15,8 +16,9 @@ const AppRouter =()=>{
         <Route path="/category/:id">
           <Gallery />
         </Route>
-        
+
       </Switch>
+      <Footer />
     </Router>
   )
 }
