@@ -7,11 +7,17 @@ export function removePhotoReducer(state, action){
 export function addPhotosReducer(state, action){
   state.photos.push(...categoryColumns(action.payload));
   state.page += 1;
-  state.loading=false;
+  state.loading={
+    ...state.loading,
+    status:false
+  }
 }
 
 export function getPhotosReducer(state){
-   state.loading= true;
+   state.loading={
+     ...state.loading,
+     status:true
+   }
 }
 
 export function setErrorsReducer(state){

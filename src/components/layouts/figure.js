@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Figure=({small,medium,caption,id})=>{
   return(
@@ -18,3 +19,10 @@ const Figure=({small,medium,caption,id})=>{
 }
 
 export default Figure;
+
+Figure.propTypes ={
+  small:PropTypes.string.isRequired,
+  medium:PropTypes.string,
+  caption:PropTypes.string,
+  id:PropTypes.string.isRequired,
+}

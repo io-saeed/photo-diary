@@ -1,9 +1,8 @@
 import { useEffect } from "react";
+import PropType from "prop-types";
 import Figure from "./figure";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchPhotoCategories,selectPage} from "../../redux/category-slice";
-
-
 
 
 const ListColumnPhotos =({data})=>{
@@ -24,9 +23,15 @@ const ListColumnPhotos =({data})=>{
     </div>
   )
 }
+
+ListColumnPhotos.propType ={
+  data:PropType.array.isRequired
+}
+
+
 const ListCategories=({data})=>{
 
-  let list = data.map(
+  const list = data.map(
     (column,index)=>(
       <div key={index} className="column is-4">
         <ListColumnPhotos data={column}/>
@@ -35,6 +40,12 @@ const ListCategories=({data})=>{
   )
   return list;
 }
+
+
+ListCategories.propType ={
+  data:PropType.array.isRequired
+}
+
 const Topics=(props)=>{
 
   const dispatch = useDispatch();

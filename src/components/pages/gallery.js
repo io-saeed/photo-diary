@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation,useParams, Link } from "react-router-dom";
 import {useDispatch, useSelector } from "react-redux";
+import PropType from "prop-types";
 import FramedPhoto from "../layouts/framed-photo";
 import FetchPhotosButton from "../layouts/fetch-photos-button";
 import { orderCategory } from "../../redux/category-slice";
@@ -40,6 +41,11 @@ const GridPhotos =({list})=>{
 
 }
 
+//Type checking props
+GridPhotos.proptype ={
+  list: PropType.object.isRequired,
+}
+
 const GalleryNav=({page,dispatch})=>{
   const handleClick=()=>{
     if(page!==1){
@@ -49,7 +55,7 @@ const GalleryNav=({page,dispatch})=>{
   const order = useSelector(orderCategory);
   const otherButtons =order.map((item,i)=>{
     return (<Link onClick={()=>handleClick()}
-            key={1} to={`/category/${item.slug}`}
+            key={i} to={`/category/${item.slug}`}
             className="button">{item.slug}</Link>)
   })
   return(

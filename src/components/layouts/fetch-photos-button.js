@@ -1,5 +1,6 @@
+import PropType from "prop-types";
 
-const FetchPhotosButton=({page, dispatch, fetch, progress,id})=>{
+function FetchPhotosButton({page, dispatch, fetch, progress,id}){
     const handleClick=()=>{
         dispatch(fetch(page,id));
     }
@@ -9,7 +10,8 @@ const FetchPhotosButton=({page, dispatch, fetch, progress,id})=>{
         </div>);
 
 }
-const ProgressStatus=({loading,click})=>{
+
+function ProgressStatus({loading,click}){
 
     switch (loading.status) {
       case true:
@@ -29,7 +31,14 @@ const ProgressStatus=({loading,click})=>{
 
 }
 
-const LoadMoreBotton=({text,click})=>{
+function LoadMoreBotton({text,click}){
   return (<button  onClick={(e)=> click()}  className="button is-primary">{text}</button>);
 }
 export default FetchPhotosButton;
+
+FetchPhotosButton.propTypes = {
+  page: PropType.number,
+  id:PropType.string.isRequired,
+  dispatch:PropType.func.isRequired,
+  progress:PropType.object.isRequired,
+}
